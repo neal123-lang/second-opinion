@@ -15,53 +15,57 @@ const Navbar = () => {
   const [mobileProviderOpen, setMobileProviderOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
 
-  const patientRef = useRef(null);
-  const providerRef = useRef(null);
+const patientRef = useRef<HTMLDivElement>(null);
+const providerRef = useRef<HTMLDivElement>(null);
 
   const closeAllMenus = () => {
-    setMobileOpen(false);
-    setPatientOpen(false);
-    setProviderOpen(false);
-    setMobilePatientOpen(false);
-    setMobileProviderOpen(false);
-    setMobileAboutOpen(false);
-  };
+  setMobileOpen(false);
+  setPatientOpen(false);
+  setProviderOpen(false);
+  setMobilePatientOpen(false);
+  setMobileProviderOpen(false);
+  setMobileAboutOpen(false);
+};
 
   // Close desktop dropdowns on outside click or Escape
   useEffect(() => {
-    if (!patientOpen && !providerOpen) return;
+  if (!patientOpen && !providerOpen) return;
 
-    const handleClickOutside = (event: { target: any; }) => {
-      if (
-        patientOpen &&
-        patientRef.current &&
-        !patientRef.current.contains(event.target)
-      ) {
-        setPatientOpen(false);
-      }
-      if (
-        providerOpen &&
-        providerRef.current &&
-        !providerRef.current.contains(event.target)
-      ) {
-        setProviderOpen(false);
-      }
-    };
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      patientOpen &&
+      patientRef.current &&
+      event.target instanceof Node &&
+      !patientRef.current.contains(event.target)
+    ) {
+      setPatientOpen(false);
+    }
 
-    const handleEscape = (event: { key: string; }) => {
-      if (event.key === "Escape") {
-        setPatientOpen(false);
-        setProviderOpen(false);
-      }
-    };
+    if (
+      providerOpen &&
+      providerRef.current &&
+      event.target instanceof Node &&
+      !providerRef.current.contains(event.target)
+    ) {
+      setProviderOpen(false);
+    }
+  };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
-    };
-  }, [patientOpen, providerOpen]);
+  const handleEscape = (event: KeyboardEvent) => {
+    if (event.key === "Escape") {
+      setPatientOpen(false);
+      setProviderOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  document.addEventListener("keydown", handleEscape);
+
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+    document.removeEventListener("keydown", handleEscape);
+  };
+}, [patientOpen, providerOpen]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">

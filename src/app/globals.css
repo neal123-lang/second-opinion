@@ -1,0 +1,770 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/*
+|--------------------------------------------------------------------------
+| Theme Presets
+|--------------------------------------------------------------------------
+| Keep these if your existing application still supports theme presets.
+*/
+@import "../styles/presets/ocean.css";
+@import "../styles/presets/blossom.css";
+@import "../styles/presets/slate.css";
+@import "../styles/presets/airbnb.css";
+
+/*
+|--------------------------------------------------------------------------
+| Dark Mode
+|--------------------------------------------------------------------------
+*/
+@custom-variant dark (&:is(.dark *));
+
+/*
+|--------------------------------------------------------------------------
+| Qikplus Design System
+|--------------------------------------------------------------------------
+|
+| Primary Brand: #5645D4
+| Font: Plus Jakarta Sans
+|
+*/
+
+@theme inline {
+  /* ---------------------------------------------------------------
+   * Typography
+   * ------------------------------------------------------------- */
+
+  --font-sans: var(--font-plus-jakarta);
+  --font-heading: var(--font-plus-jakarta);
+
+  --font-mono:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+
+  /* ---------------------------------------------------------------
+   * Border Radius
+   * ------------------------------------------------------------- */
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* ---------------------------------------------------------------
+   * Core Colors
+   * ------------------------------------------------------------- */
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* ---------------------------------------------------------------
+   * Qikplus Brand Colors
+   * ------------------------------------------------------------- */
+
+  --color-primary-pressed: var(--primary-pressed);
+  --color-primary-deep: var(--primary-deep);
+  --color-on-primary: var(--on-primary);
+
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-navy-deep: var(--brand-navy-deep);
+  --color-brand-navy-mid: var(--brand-navy-mid);
+
+  --color-link-blue: var(--link-blue);
+  --color-link-blue-pressed: var(--link-blue-pressed);
+
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-orange-deep: var(--brand-orange-deep);
+
+  --color-brand-pink: var(--brand-pink);
+
+  /* ---------------------------------------------------------------
+   * Charts
+   * ------------------------------------------------------------- */
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* ---------------------------------------------------------------
+   * Sidebar
+   * ------------------------------------------------------------- */
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+|--------------------------------------------------------------------------
+| Root Theme
+|--------------------------------------------------------------------------
+*/
+
+:root {
+  /* ---------------------------------------------------------------
+   * Typography
+   * ------------------------------------------------------------- */
+
+  --font-sans: var(--font-plus-jakarta);
+  --font-heading: var(--font-plus-jakarta);
+
+  --font-mono:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    "Liberation Mono",
+    "Courier New",
+    monospace;
+
+  /* ---------------------------------------------------------------
+   * Radius
+   * ------------------------------------------------------------- */
+
+  --radius: 0.875rem;
+
+  /* ---------------------------------------------------------------
+   * Background & Foreground
+   * ------------------------------------------------------------- */
+
+  --background: #ffffff;
+  --foreground: #172033;
+
+  /* ---------------------------------------------------------------
+   * Cards
+   * ------------------------------------------------------------- */
+
+  --card: #ffffff;
+  --card-foreground: #172033;
+
+  /* ---------------------------------------------------------------
+   * Popovers
+   * ------------------------------------------------------------- */
+
+  --popover: #ffffff;
+  --popover-foreground: #172033;
+
+  /* ---------------------------------------------------------------
+   * Primary Brand
+   * ------------------------------------------------------------- */
+
+  --primary: #5645d4;
+  --primary-foreground: #ffffff;
+
+  /* ---------------------------------------------------------------
+   * Secondary
+   * ------------------------------------------------------------- */
+
+  --secondary: #eeecfb;
+  --secondary-foreground: #172033;
+
+  /* ---------------------------------------------------------------
+   * Muted
+   * ------------------------------------------------------------- */
+
+  --muted: #f4f4f8;
+  --muted-foreground: #5a5f73;
+
+  /* ---------------------------------------------------------------
+   * Accent
+   * ------------------------------------------------------------- */
+
+  --accent: #f7f6fd;
+  --accent-foreground: #5645d4;
+
+  /* ---------------------------------------------------------------
+   * Destructive
+   * ------------------------------------------------------------- */
+
+  --destructive: #dc2626;
+
+  /* ---------------------------------------------------------------
+   * Borders / Inputs
+   * ------------------------------------------------------------- */
+
+  --border: #dfe1ea;
+  --input: #dfe1ea;
+  --ring: #5645d4;
+
+  /* ---------------------------------------------------------------
+   * Primary States
+   * ------------------------------------------------------------- */
+
+  --primary-pressed: #4534b3;
+  --primary-deep: #3a2a99;
+  --on-primary: #ffffff;
+
+  /* ---------------------------------------------------------------
+   * Brand Navy
+   * ------------------------------------------------------------- */
+
+  --brand-navy: #0a1530;
+  --brand-navy-deep: #070f24;
+  --brand-navy-mid: #1a2a52;
+
+  /* ---------------------------------------------------------------
+   * Supporting Blue
+   * ------------------------------------------------------------- */
+
+  --link-blue: #0075de;
+  --link-blue-pressed: #005bab;
+
+  /* ---------------------------------------------------------------
+   * Supporting Accent Colors
+   * ------------------------------------------------------------- */
+
+  --brand-orange: #dd5b00;
+  --brand-orange-deep: #793400;
+
+  --brand-pink: #ff64c8;
+
+  /* ---------------------------------------------------------------
+   * Charts
+   * ------------------------------------------------------------- */
+
+  --chart-1: #5645d4;
+  --chart-2: #0a1530;
+  --chart-3: #0075de;
+  --chart-4: #dd5b00;
+  --chart-5: #ff64c8;
+
+  /* ---------------------------------------------------------------
+   * Sidebar
+   * ------------------------------------------------------------- */
+
+  --sidebar: #0a1530;
+  --sidebar-foreground: #ffffff;
+
+  --sidebar-primary: #5645d4;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #1a2a52;
+  --sidebar-accent-foreground: #ffffff;
+
+  --sidebar-border: #070f24;
+  --sidebar-ring: #5645d4;
+
+  /* ---------------------------------------------------------------
+   * Legacy / Compatibility Tokens
+   * ---------------------------------------------------------------
+   * Kept so existing components don't break.
+   */
+
+  --rausch: #5645d4;
+  --rausch-active: #4534b3;
+  --rausch-disabled: #eeecfb;
+
+  --luxe: #3a2a99;
+  --plus: #5645d4;
+
+  --ink: #172033;
+  --body-text: #2d3548;
+  --muted-text: #5a5f73;
+
+  --hairline: #dfe1ea;
+  --hairline-soft: #ebebef;
+
+  --surface-soft: #f7f6fd;
+  --surface-strong: #eeecfb;
+
+  /* ---------------------------------------------------------------
+   * Shadows
+   * ------------------------------------------------------------- */
+
+  --shadow-airbnb:
+    rgba(10, 21, 48, 0.04) 0 0 0 1px,
+    rgba(10, 21, 48, 0.06) 0 2px 6px 0,
+    rgba(10, 21, 48, 0.12) 0 4px 8px 0;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Dark Theme
+|--------------------------------------------------------------------------
+|
+| The public Qikplus website is primarily designed around the light theme.
+| These values are retained for compatibility with shadcn/theme systems.
+|
+*/
+
+.dark {
+  --background: #0c1020;
+  --foreground: #f8f9fc;
+
+  --card: #12182a;
+  --card-foreground: #f8f9fc;
+
+  --popover: #12182a;
+  --popover-foreground: #f8f9fc;
+
+  --primary: #7567e1;
+  --primary-foreground: #ffffff;
+
+  --secondary: #24213f;
+  --secondary-foreground: #f8f9fc;
+
+  --muted: #1b2031;
+  --muted-foreground: #a6adbf;
+
+  --accent: #24213f;
+  --accent-foreground: #dcd8ff;
+
+  --destructive: #ef4444;
+
+  --border: rgba(255, 255, 255, 0.10);
+  --input: rgba(255, 255, 255, 0.14);
+
+  --ring: #7567e1;
+
+  --chart-1: #7567e1;
+  --chart-2: #8b7fe8;
+  --chart-3: #4f9ce8;
+  --chart-4: #e58a4f;
+  --chart-5: #ed7dc8;
+
+  --sidebar: #090d19;
+  --sidebar-foreground: #f8f9fc;
+
+  --sidebar-primary: #7567e1;
+  --sidebar-primary-foreground: #ffffff;
+
+  --sidebar-accent: #181d30;
+  --sidebar-accent-foreground: #f8f9fc;
+
+  --sidebar-border: rgba(255, 255, 255, 0.08);
+  --sidebar-ring: #7567e1;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Base Styles
+|--------------------------------------------------------------------------
+*/
+
+@layer base {
+  /*
+   * Universal box sizing
+   */
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /*
+   * Global document typography
+   */
+
+  html {
+    @apply font-sans;
+    font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+    scroll-behavior: smooth;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+
+    min-height: 100vh;
+
+    font-family:
+      var(--font-plus-jakarta),
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      sans-serif;
+
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /*
+   * Headings
+   */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family:
+      var(--font-plus-jakarta),
+      system-ui,
+      sans-serif;
+
+    color: var(--foreground);
+
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+
+  h1 {
+    font-weight: 800;
+    letter-spacing: -0.035em;
+  }
+
+  h2 {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+
+  h3 {
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  /*
+   * Paragraphs
+   */
+
+  p {
+    line-height: 1.7;
+  }
+
+  /*
+   * Links
+   */
+
+  a {
+    text-decoration: none;
+  }
+
+  /*
+   * Buttons and form controls
+   */
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+  /*
+   * Images
+   */
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+  }
+
+  /*
+   * Selection
+   */
+
+  ::selection {
+    background: rgba(86, 69, 212, 0.16);
+    color: #3a2a99;
+  }
+
+  /*
+   * Focus
+   */
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Utility Styles
+|--------------------------------------------------------------------------
+*/
+
+@layer utilities {
+  /*
+   * Theme preset shadow compatibility
+   */
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-2xs {
+    box-shadow: var(--shadow-2xs);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-xs {
+    box-shadow: var(--shadow-xs);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-sm {
+    box-shadow: var(--shadow-sm);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow {
+    box-shadow: var(--shadow);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-md {
+    box-shadow: var(--shadow-md);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-lg {
+    box-shadow: var(--shadow-lg);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-xl {
+    box-shadow: var(--shadow-xl);
+  }
+
+  [data-theme-preset]:not([data-theme-preset="default"]) .shadow-2xl {
+    box-shadow: var(--shadow-2xl);
+  }
+
+  /*
+   * Qikplus text utilities
+   */
+
+  .text-brand {
+    color: var(--primary);
+  }
+
+  .text-brand-dark {
+    color: var(--primary-deep);
+  }
+
+  .bg-brand {
+    background-color: var(--primary);
+  }
+
+  .bg-brand-soft {
+    background-color: #f7f6fd;
+  }
+
+  .border-brand {
+    border-color: var(--primary);
+  }
+
+  /*
+   * Professional section background
+   */
+
+  .section-soft {
+    background-color: #f8f7fd;
+  }
+
+  /*
+   * Subtle brand gradient
+   */
+
+  .bg-brand-gradient {
+    background:
+      linear-gradient(
+        135deg,
+        #5645d4 0%,
+        #6656db 50%,
+        #4938c2 100%
+      );
+  }
+
+  /*
+   * Soft purple gradient
+   */
+
+  .bg-purple-gradient {
+    background:
+      linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #f8f7fd 100%
+      );
+  }
+
+  /*
+   * Brand glow
+   */
+
+  .brand-glow {
+    box-shadow:
+      0 10px 30px rgba(86, 69, 212, 0.14),
+      0 4px 12px rgba(86, 69, 212, 0.08);
+  }
+
+  /*
+   * Professional card shadow
+   */
+
+  .card-shadow {
+    box-shadow:
+      0 1px 2px rgba(15, 23, 42, 0.03),
+      0 8px 24px rgba(15, 23, 42, 0.05);
+  }
+
+  /*
+   * Glass effect
+   */
+
+  .glass {
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(223, 225, 234, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /*
+   * Hide scrollbar while maintaining scroll
+   */
+
+  .scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Accessibility
+|--------------------------------------------------------------------------
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*
+|--------------------------------------------------------------------------
+| Global Scroll Behavior
+|--------------------------------------------------------------------------
+*/
+
+html {
+  overscroll-behavior: none;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Disable Transitions
+|--------------------------------------------------------------------------
+*/
+
+.disable-transitions * {
+  transition: none !important;
+}
+
+/*
+|--------------------------------------------------------------------------
+| Print Styles
+|--------------------------------------------------------------------------
+*/
+
+[data-print-root] {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: Letter;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 8.5in !important;
+    height: 11in !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+
+    font-family:
+      var(--font-plus-jakarta),
+      Arial,
+      sans-serif !important;
+  }
+
+  body > *:not([data-print-root]) {
+    display: none !important;
+  }
+
+  [data-print-root] {
+    display: block !important;
+
+    width: 8.5in !important;
+    height: 11in !important;
+
+    margin: 0 !important;
+    overflow: hidden !important;
+
+    background: white !important;
+  }
+
+  [data-print-root] [data-print-paper] {
+    width: 8.5in !important;
+    height: 11in !important;
+
+    margin: 0 !important;
+
+    box-shadow: none !important;
+  }
+
+  [data-print-root] [data-print-paper],
+  [data-print-root] [data-print-paper] * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}

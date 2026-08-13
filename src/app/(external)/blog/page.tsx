@@ -1,9 +1,7 @@
-import React from 'react'
-
-const page = () => {
+export default function BlogPage() {
   return (
-    <div className='py-20'>Coming Soon</div>
-  )
+    <div className="py-20">
+      Coming Soon
+    </div>
+  );
 }
-
-export default page
